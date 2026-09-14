@@ -23,6 +23,7 @@
 - **2b.** The password does not meet the password-strength requirements: system rejects the request and explains the requirements.
 - **3a.** An account already exists for the submitted email: system returns a generic registration failure message that does not reveal whether the email is already registered.
 - **5a.** Verification-message delivery fails: the account remains unverified and the user can request another verification message later.
+
 ---
 
 ## US-02: Log In
@@ -45,6 +46,7 @@
 - **2a.** Credentials do not match: system returns a generic "invalid email or password" error, not revealing *which* field was wrong, to avoid account enumeration security issue.
 - **2b.** Account exists but is not yet verified: system rejects login and offers to resend a verification message.
 - **3a.** If refresh token issuance fails: system does not issue an access token either. This helps to mitigate no partial authentication state.
+
 ---
 
 ## US-03: Publish Post
@@ -69,6 +71,7 @@
 - **1a.** Author navigates away mid-draft: the most recent autosave is retained (depends on 5.4's negotiated autosave scope).
 - **3a.** Author is not the post's owner (e.g., a stale session referencing another user's draft): system rejects with an authorization error.
 - **4a.** Title or body is empty: system rejects the publish request and keeps the post in `Draft`.
+
 ---
 
 ## US-04: Browse Feed
@@ -89,3 +92,5 @@
 
 - **2a.** No posts exist yet: system shows an explicit empty state, not a blank screen (a real requirement, not a cosmetic afterthought). An untested empty state is a common source of embarrassing production bugs.
 - **2b.** A requested page is beyond the available data: system returns an empty page, not an error.
+
+---
