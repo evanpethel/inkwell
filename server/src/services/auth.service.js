@@ -13,6 +13,11 @@ class InvalidCredentialsError extends Error {}
 
 const MIN_PASSWORD_LENGTH = 8;
 
+function toUserPublic(user) {
+    const { passwordHash, ...userPublic } = user;
+    return userPublic;
+}
+
 export const AuthService = {
     async register({ email, displayName, password }) {
         assertNonEmpty(email, "email", "MISSING_EMAIL");
@@ -37,7 +42,7 @@ export const AuthService = {
             throw new EmailAlreadyRegisteredError();
         }
         const tokens = TokenService.issueTokens(user);
-        return { user, ...tokens };
+        return { user: toUserPublic(user), ...tokens };
     },
     async login({ email, password }) {
         const user = await UserRepository.findByEmail(email);
@@ -49,7 +54,7 @@ export const AuthService = {
             throw new InvalidCredentialsError();
         }
         const tokens = TokenService.issueTokens(user);
-        return { user, ...tokens };
+        return { user: toUserPublic(user), ...tokens };
     },
 };
 
