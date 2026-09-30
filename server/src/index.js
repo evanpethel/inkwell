@@ -5,10 +5,12 @@
 // consistent with ADR-001's layered architecture.
 
 import "dotenv/config";
+import "./events/listeners/log-published-posts.listener.js";
 import express from "express";
 import healthRoutes from "./routes/health.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import postRoutes from "./routes/post.routes.js";
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
