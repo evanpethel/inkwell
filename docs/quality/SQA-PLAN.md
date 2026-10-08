@@ -19,3 +19,8 @@
 - Review turnaround (informal, tracked qualitatively at this project's scale)
 ## Ownership
 - For this course project: the student/team implementing Inkwell owns SQA plan adherence.
+## Metrics Snapshot (as of 2026-10-07)
+| Metric | Count |
+| Commits | 21 |
+| Logged defects (docs/quality/DEFECT-LOG.md) | 1 |
+| Backlog items at "Requirements Defined" or later | 4 (US-01 to US-04) |
