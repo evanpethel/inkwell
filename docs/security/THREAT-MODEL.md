@@ -16,6 +16,7 @@
 | GET /api/posts | Response includes fields beyond what the feed needs (e.g., email) | Information Disclosure | High | Medium | High | Explicit response shaping / DTO (Section 5.3) |
 | POST /api/auth/login | Unlimited login attempts enable brute-force credential guessing | Denial of Service / Broken Auth | Medium | High | High | Rate limiting (Section 5.4) |
 | POST /api/posts | Untrusted `body` content rendered unsanitized on the client, enabling stored XSS | Tampering / Info Disclosure | Medium | High | High | Output encoding on render (Section 5.5) |
+| GET /api/posts | A client requests an enormous `pageSize` (e.g. 1,000,000) to force large database reads and oversized responses | Denial of Service | Medium | Medium | Medium | Server-side maximum page size (50); invalid or missing values fall back to the default (10) |
 
 ## Security
 
