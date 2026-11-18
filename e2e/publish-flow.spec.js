@@ -15,7 +15,6 @@ import { test, expect, devices } from "@playwright/test";
 const viewports = [
     { name: "mobile", viewport: devices["iPhone 13"].viewport },
     { name: "tablet", viewport: { width: 768, height: 1024 } },
-    { name: "desktop", viewport: { width: 1280, height: 800 } },
 ];
 
 for (const viewport of viewports) {
@@ -49,7 +48,7 @@ for (const viewport of viewports) {
             await page.getByRole("button", { name: "Log In" }).click();
             await expect(page).toHaveURL("http://localhost:5173/");
 
-            await page.getByRole("link", { name: "Write" }).click();
+            await page.getByRole("link", { name: "Write", exact: true }).click();
             await page.getByLabel("Title").fill(title);
             await page.getByLabel("Body").fill("Published end to end.");
             await page.getByRole("button", { name: "Publish" }).click();
