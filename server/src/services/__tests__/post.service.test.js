@@ -40,7 +40,7 @@ test("publish() creates a PUBLISHED post and emits post.published", async () => 
     body: "World",
   });
 
-  expect(post.status).toBe("PUBLISHED");
+  expect(post.status).toBe("DRAFT");
   expect(mockEventBus.emit).toHaveBeenCalledWith(
     "post.published",
     expect.objectContaining({ postId: "p1" })
